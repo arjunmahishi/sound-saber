@@ -16,60 +16,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
   
 
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
 </head>
 
 <body>
 
-      <nav class="navbar navbar-dark bg-dark">
-         <a class="navbar-brand" href="#">SoundSaber</a>
-      </nav>
-      
-      <div class="container clearfix">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Sound Saber</a>
+    </nav>
+     
+    <div class="container clearfix">
         <div class="people-list" id="people-list">
           
           <div class="search">
             <input class="form-control" type="text" placeholder="search" />
-            
           </div>
 
-          <ul class="list">
-            
-            <li class="clearfix">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-              <div class="about">
-                <div class="name">Vincent Porter</div>
-              </div>
-            </li>
+          <span class="add-new" onclick="$('#trigger-modal').click()">+ Add new contact</span>
 
-            <li class="clearfix">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-              <div class="about">
-                <div class="name">Vincent Porter</div>
-              </div>
-            </li>
-
-            <li class="clearfix">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-              <div class="about">
-                <div class="name">Vincent Porter</div>
-              </div>
-            </li>
-
-            <li class="clearfix">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
-              <div class="about">
-                <div class="name">Vincent Porter</div>
-              </div>
-            </li>
-
-          </ul>
+          <ul class="list" id="contact-list"></ul>
+        
         </div>
 
-      </div> <!--container -->
+      </div>
 
 </body>
 
@@ -77,7 +51,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/config.js"></script>
+<script src="js/contacts.js"></script>
 
 <!--<script type="text/javascript">
     if('serviceWorker' in navigator) {
@@ -90,3 +65,28 @@
 </script>-->
 
 </html>
+
+<button id="trigger-modal" hidden type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <input id="new-email" type="email" class="form-control" />
+
+      </div>
+      <div class="modal-footer">
+        <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button onclick="addContact()" type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

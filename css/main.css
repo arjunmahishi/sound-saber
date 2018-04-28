@@ -87,11 +87,13 @@ people-list {
   left: -25px;
 }
 .people-list ul {
-  padding: 20px;
-  height: 770px;
+    padding: 20px;
+    /*height: 770px;*/
+    margin-top: 35px;
 }
 .people-list ul li {
   padding-bottom: 20px;
+  list-style: none;
 }
 .people-list img {
   float: left;
@@ -103,8 +105,9 @@ people-list {
 }
 .people-list .about {
   padding-left: 8px;
-  margin-top: 20px;
+  margin-top: 11px;
   font-size: 21px;
+  margin-left: 8px;
 }
 .people-list .status {
   color: #92959E;
@@ -127,4 +130,16 @@ people-list {
 
 .clearfix{
     margin-bottom: 10px;
+}
+
+.add-new{
+    position: absolute;
+    margin: 15px 15px 15px 86px;
+    font-size: 17px;
+    color: #69707c;
+    cursor: pointer;
+}
+
+.image-holder{
+    max-width: 60px;
 }
