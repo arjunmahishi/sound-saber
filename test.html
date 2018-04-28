@@ -16,6 +16,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="script.js"></script>
 
+        <script>
+            // HTTPS REDIRECT //
+            if (location.protocol !== 'https:' && location.hostname !== 'localhost') 
+                location.replace('https://' + location.href.split('//')[1]);
+        </script>
+
     </body>
 </html>
 
