@@ -17,11 +17,38 @@
 
 </head>
 
+<style>
+
+    .message-box{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 7px;
+    }
+
+    .send-btn{
+        margin: 10px 0px 0px -12px;
+        border-radius: 13%;
+        color: #ffffff;
+        background-color: #32383d;
+    }
+
+</style>
+
 <body>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Sound Saber</a>
+        <a class="navbar-brand" href="#">Other user's name</a>
     </nav>
+
+    <div class="message-box row">
+        <div class="col-10">
+            <textarea class="form-control" id="message"></textarea>
+        </div>
+        <div class="col-1">
+            <button class="btn send-btn">Send</button>
+        </div>
+    </div>
 
 </body>
 
@@ -30,15 +57,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-
-<!--<script type="text/javascript">
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-            .register( window.location.href + 'service-worker.js')
-            .then(function() { 
-                console.log("Service Worker Registered"); 
-        });
-    }
-</script>-->
 
 </html>
