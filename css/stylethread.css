@@ -149,6 +149,7 @@ body {
 .chat .chat-message {
     position: absolute;
     bottom: 0;
+    width: 100%;
 }
 
 .chat .chat-message textarea {

@@ -59,7 +59,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 			name: user.displayName,
 			photo: user.photoURL
 		})
-			window.location = "recent.html";
+			window.location = "contacts.html";
 		})
   } else {
     console.log("didn't work");

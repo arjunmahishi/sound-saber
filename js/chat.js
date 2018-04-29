@@ -36,7 +36,7 @@ const showMyMessage = (message) => {
     document.querySelector("#messages").innerHTML += `
         <li>
             <div class="message-data align-right">
-                <span class="message-data-name" >Me</span>              
+                <span class="message-data-name" ></span>              
             </div>
             <div class="message other-message float-right">${message}</div>
         </li>
@@ -47,7 +47,7 @@ const showTheirMessage = (message) => {
     document.querySelector("#messages").innerHTML += `
         <li>
             <div class="message-data">
-                <span class="message-data-name">${getRecieverData().name}</span>
+                <span class="message-data-name"></span>
             </div>
             <div class="message my-message">${message}</div>
         </li>
@@ -111,7 +111,11 @@ const speak = (message) => {
 
 
 //// main ////
-let recData = getRecieverData();
+window.onload = () => {
+    let recData = getRecieverData();
 
-$("#rec-img").attr("src", recData.photo)
-$("#rec-name").html(recData.name)
+    $("#rec-img").attr("src", recData.photo)
+    $("#rec-name").html(recData.name)
+
+    startListening()
+}
