@@ -88,7 +88,10 @@ database.ref(`/calls/${getCallID()}/messages/`).on('child_added', (data) => {
 
 
 //// Microphone controls //// 
-const startListening = () => recognition.start();
+const startListening = () => {
+    flag = true;
+    recognition.start();
+}
 const stopListening = () => {
     flag = false;
     recognition.stop();
