@@ -1,7 +1,20 @@
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 var flag = true;
+var toggleFlag = true;
 
+
+const toggle = () => {
+    if (toggleFlag) {
+        toggleFlag = false;
+        stopListening();
+        $("#mic-control").html("Unmute")
+    }else{
+        toggleFlag = true;
+        startListening();
+        $("#mic-control").html("Mute")
+    }
+}
 
 //// Send message to database //// 
 const sendMessage = ( sender, reciever, message) => {  
@@ -13,6 +26,14 @@ const sendMessage = ( sender, reciever, message) => {
 	})
 }
 
+const sendText = () => {
+    sendMessage( 
+        getMyData().uid, 
+        getRecieverData().uid, 
+        $("#text-box").val()
+    );
+    $("#text-box").val("")
+}
 
 const getCallID = () => {
 
@@ -60,6 +81,8 @@ database.ref(`/calls/${getCallID()}/messages/`).on('child_added', (data) => {
 
     if(data.val().from == getMyData().uid) showMyMessage(data.val().message);
     else showTheirMessage(data.val().message);
+
+    window.scrollTo(0,document.querySelector(".chat-history").scrollHeight);
 
 });
 

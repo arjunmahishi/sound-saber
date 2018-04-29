@@ -104,6 +104,7 @@ body {
   overflow-y: scroll;
   margin-top: 80px;
   background-color: #fff;
+  margin-bottom: 3rem;
 }
 .chat .chat-history .message-data {
   margin-bottom: 15px;
@@ -147,19 +148,16 @@ body {
 }
 
 .chat .chat-message {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    position: fixed;
+    bottom: -10px;
+    width: 104%;
+    box-shadow: 1px -1px 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
 }
 
 .chat .chat-message textarea {
-  width: 100%;
-  border: none;
-  padding: 10px 20px;
-  font: 14px/22px "Lato", Arial, sans-serif;
-  margin-bottom: 10px;
-  border-radius: 5px;
   resize: none;
+  margin: 7px;
 }
 .chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
   font-size: 16px;
@@ -167,17 +165,8 @@ body {
   cursor: pointer;
 }
 .chat .chat-message button {
-  float: right;
-  color: #94C2ED;
-  font-size: 16px;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  background: #F2F5F8;
-}
-.chat .chat-message button:hover {
-  color: #75b1e8;
+    margin-left: -19px;
+    width: 94px;
 }
 
 .online, .offline, .me {
