@@ -48,10 +48,17 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log("Logged in as", user);
 		//// Register user on the database ////
 		firebase.database().ref(`/users/${user.uid}`).set({
+			uid: user.uid,
 			email: user.email,
 			name: user.displayName,
 			photo: user.photoURL
 		}).then(() => {
+			localStorage['me'] = JSON.stringify({
+			uid: user.uid,
+			email: user.email,
+			name: user.displayName,
+			photo: user.photoURL
+		})
 			window.location = "recent.html";
 		})
   } else {

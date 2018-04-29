@@ -48,44 +48,18 @@
    
     
     <div class="chat">
+
       <div class="chat-header clearfix">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
-        
+        <img class="img-fluid" id="rec-img" alt="avatar" />
         <div class="chat-about">
-          <div class="chat-with">Chat with Vincent Porter</div>
+          <div id="rec-name" class="chat-with"></div>
         </div>
-        
       </div> <!-- end chat-header -->
       
       <div class="chat-history">
-        <ul>
-          <li class="clearfix">
-            
-            
-          <li class="clearfix">
-            <div class="message-data align-right">
-              <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
-              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-              
-            </div>
-            <div class="message other-message float-right">
-              Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
-            </div>
-          </li>
-          
-          <li>
-            <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-              <span class="message-data-time">10:20 AM, Today</span>
-            </div>
-            <div class="message my-message">
-              Actually everything was fine. I'm very excited to show this to our team.
-            </div>
-          </li>
+        <ul id="messages"></ul>
         
-        </ul>
-        
-     <!-- </div> <!-- end chat-history -->
+      </div> <!-- end chat-history -->
       
       <div class="chat-message clearfix">
         <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
@@ -98,6 +72,14 @@
       
     </div> <!-- end chat -->
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/chat.js"></script>
+
   </html>
     
+
 

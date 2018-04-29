@@ -1,34 +1,86 @@
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
+var flag = true;
 
 
 //// Send message to database //// 
 const sendMessage = ( sender, reciever, message) => {  
-    var info = database.ref("/messages");
+    var info = database.ref("/calls/" + getCallID() + "/messages");
     info.push({ 
-	    sender: sender,
-	    reciever: reciever,
+	    from: sender,
+	    to: reciever,
 	    message: message
 	})
 }
 
 
+const getCallID = () => {
+
+    let myUID = getMyData().uid;
+    let theirUID = getRecieverData().uid; 
+
+    if (theirUID > myUID) return theirUID + "__" + myUID;
+    return myUID + "__" + theirUID
+}
+
+
+const getRecieverData = () => {
+    return JSON.parse(localStorage['reciever'])
+}
+
+const getMyData = () => {
+    return JSON.parse(localStorage['me'])
+}
+
+const showMyMessage = (message) => {
+    document.querySelector("#messages").innerHTML += `
+        <li>
+            <div class="message-data align-right">
+                <span class="message-data-name" >Me</span>              
+            </div>
+            <div class="message other-message float-right">${message}</div>
+        </li>
+    `;
+}
+
+const showTheirMessage = (message) => {
+    document.querySelector("#messages").innerHTML += `
+        <li>
+            <div class="message-data">
+                <span class="message-data-name">${getRecieverData().name}</span>
+            </div>
+            <div class="message my-message">${message}</div>
+        </li>
+    `;
+}
+
+
 //// Listen to messages from database  //// 
-database.ref("/calls/callID/messages/").on('child_added', (data) => {
-    // Create chat bubbles 
+database.ref(`/calls/${getCallID()}/messages/`).on('child_added', (data) => {
+
+    if(data.val().from == getMyData().uid) showMyMessage(data.val().message);
+    else showTheirMessage(data.val().message);
+
 });
 
 
 //// Microphone controls //// 
 const startListening = () => recognition.start();
-const stopListening = () => recognition.stop();
+const stopListening = () => {
+    flag = false;
+    recognition.stop();
+}
 
 recognition.onresult = function(event) {
     var current = event.resultIndex;
     var transcript = event.results[current][0].transcript;
     var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
 
-    if(!mobileRepeatBug) sendMessage("me", "him", transcript);
+    if(!mobileRepeatBug) sendMessage( 
+        getMyData().uid, 
+        getRecieverData().uid, 
+        transcript
+    );
 
 };
 
@@ -37,7 +89,7 @@ recognition.onstart = function() {
 }
 
 recognition.onend = function() {
-    recognition.start();
+    if(flag) recognition.start();
 }
 
 recognition.onerror = function(event) {
@@ -56,3 +108,10 @@ const speak = (message) => {
   
 	window.speechSynthesis.speak(speech);
 }
+
+
+//// main ////
+let recData = getRecieverData();
+
+$("#rec-img").attr("src", recData.photo)
+$("#rec-name").html(recData.name)

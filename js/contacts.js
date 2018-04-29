@@ -3,6 +3,7 @@ const data = [
     "abc"
 ]
 
+const contacts = [];
 
 const varifyEmail = (email, callback) => {
     database.ref("/users").once('value', (data) => {
@@ -28,12 +29,18 @@ const addContact = () => {
     })
 }
 
+const call = (recieverID) => {
+    localStorage['reciever'] = JSON.stringify(contacts[recieverID]);
+    document.location = "call.html";
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    //// Get recent from database ////
+    //// Get contacts from database ////
     database.ref(`/users/${firebase.auth().currentUser.uid}/contacts/`).on('child_added', (data) => {
+        contacts.push(data.val());
         document.querySelector("#contact-list").innerHTML += `
-            <li class="clearfix">
+            <li class="clearfix" onclick="call(contacts.length-1)" >
                 <div class="image-holder">
                     <img class="img-fluid" src="${data.val().photo}" alt="avatar" />
                 </div>
