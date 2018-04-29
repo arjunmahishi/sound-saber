@@ -148,3 +148,12 @@ people-list {
 .subtitle-holder{
     padding: 10px;
 }
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0 !important; 
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: none !important; 
+}

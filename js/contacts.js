@@ -21,8 +21,9 @@ const addContact = () => {
     let email = document.querySelector("#new-email").value;
     varifyEmail(email, re => {
         if(re){
-            database.ref(`/users/${firebase.auth().currentUser.uid}/contacts`).push(re.data);
-            $("#close-modal").click()
+            database.ref(`/users/${firebase.auth().currentUser.uid}/contacts`)
+            .push(re.data)
+            .then(() => $("#close-modal").click())
         }else{
             alert("This email is not registerd on this platform.")
         }

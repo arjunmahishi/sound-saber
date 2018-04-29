@@ -55,10 +55,7 @@ const getMyData = () => {
 
 const showMyMessage = (message) => {
     document.querySelector("#messages").innerHTML += `
-        <li>
-            <div class="message-data align-right">
-                <span class="message-data-name" ></span>              
-            </div>
+        <li class="list-group-item">
             <div class="message other-message float-right">${message}</div>
         </li>
     `;
@@ -66,10 +63,7 @@ const showMyMessage = (message) => {
 
 const showTheirMessage = (message) => {
     document.querySelector("#messages").innerHTML += `
-        <li>
-            <div class="message-data">
-                <span class="message-data-name"></span>
-            </div>
+        <li class="list-group-item" >
             <div class="message my-message">${message}</div>
         </li>
     `;
@@ -88,7 +82,10 @@ database.ref(`/calls/${getCallID()}/messages/`).on('child_added', (data) => {
 
 
 //// Microphone controls //// 
-const startListening = () => recognition.start();
+const startListening = () => {
+    flag = true;
+    recognition.start();
+}
 const stopListening = () => {
     flag = false;
     recognition.stop();
