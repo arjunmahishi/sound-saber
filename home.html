@@ -1,0 +1,162 @@
+<html><head>
+	<title>Sound Saber</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/icon.png">
+    <link rel="icon" type="image/png" href="/assets/icons/icon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/icons/icon.png" sizes="16x16">
+    <link rel="manifest" href="./manifest.json">
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sound.css">
+
+
+
+
+ 
+
+
+
+<style>
+* {
+    box-sizing: border-box;
+}
+.name{
+  font-color: white;
+  font-size: 12px;
+}
+.container{
+    margin: 10px;
+
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    
+    width: 45%;
+    padding: 40px;
+    margin: 5px;
+    margin-bottom: 25px;
+    margin-top: 25px; 
+    background-color: #343a40;
+    text-decoration-color: white;
+    text-align: center;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Style the buttons */
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn.active {
+    background-color: #666;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">Sound Saber</a>
+    </nav>
+
+
+
+
+<div class="container">
+<div class="row">
+  <div class="column">
+    <name>Contacts</name>
+    
+  </div>
+  <div class="column">
+    <name>Chats</name>
+    
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <name>Recording</name>
+    
+  </div>
+  <div class="column">
+    <name>About</name>
+    
+  </div>
+</div>
+
+</div>
+
+
+
+<script>
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("column");
+
+// Declare a loop variable
+var i;
+
+// List View
+function listView() {
+    for (i = 0; i < elements.length; i++) {
+        elements[i].style.width = "100%";
+    }
+}
+
+// Grid View
+function gridView() {
+    for (i = 0; i < elements.length; i++) {
+        elements[i].style.width = "50%";
+    }
+}
+
+/* Optional: Add active class to the current button (highlight it) */
+var container = document.getElementById("btnContainer");
+var btns = container.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/sound.js"></script>
+<!--<script type="text/javascript">
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register( window.location.href + 'service-worker.js')
+            .then(function() { 
+                console.log("Service Worker Registered"); 
+        });
+    }
+</script>-->
+
+</body></html>
