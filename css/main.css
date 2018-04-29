@@ -144,3 +144,7 @@ people-list {
 .image-holder{
     max-width: 60px;
 }
+
+.subtitle-holder{
+    padding: 10px;
+}

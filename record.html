@@ -27,14 +27,14 @@
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Sound Saber</a>
     </nav>
-    <textarea rows='10'columns='4'class="form-control" aria-label="With textarea"></textarea>
+    
+    <div class="subtitle-holder">
+        <textarea rows='15' columns='4' id="subtitle" class="form-control" 
+        aria-label="With textarea"></textarea>
+    </div>
+
     <center class="record">
-        <a href="#" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-record"></span> Record
-        </a>
-        <a href="#" class="btn btn-info btn-lg">
-            <span class="glyphicon glyphicon-record"></span> Save
-          </a>
+        <button onclick="toggle()" class="btn btn-primary" id="rec-btn" >Record</button>
     </center>
    
 </body>
@@ -43,7 +43,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script src="js/record.js"></script>
 
 <!--<script type="text/javascript">
     if('serviceWorker' in navigator) {

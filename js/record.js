@@ -1,10 +1,31 @@
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 var recognition = new SpeechRecognition();
 
+var flag = true;
+var recordFlag = true;
 
 //// Microphone controls //// 
-const startListening = () => recognition.start();
-const stopListening = () => recognition.stop();
+const startListening = () => {
+    recordFlag = true;
+    recognition.start();
+}
+const stopListening = () => {
+    recordFlag = false;
+    recognition.stop();
+}
+
+const toggle = () => {
+    if (flag) {
+        startListening();
+        $("#rec-btn").html("Stop");
+        flag = false
+    }
+    else{
+        stopListening();
+        $("#rec-btn").html("Record")  
+        flag = true  
+    } 
+}
 
 recognition.onresult = function(event) {
     var current = event.resultIndex;
@@ -12,7 +33,7 @@ recognition.onresult = function(event) {
     var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
 
     if(!mobileRepeatBug) {
-        // Handle the recognised text
+        document.querySelector("#subtitle").value += "\n" + transcript;
     }
 
 };
@@ -22,7 +43,7 @@ recognition.onstart = function() {
 }
 
 recognition.onend = function() {
-    recognition.start();
+    if(recordFlag) recognition.start();
 }
 
 recognition.onerror = function(event) {
