@@ -1,0 +1,52 @@
+<html>
+   <head>
+   
+      <style>
+         
+         .animated {
+            background-image: url(logo.png);
+            height: 100%;
+            width: auto;
+            
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top:65px;
+            margin-bottom:50px;
+            -webkit-animation-duration: 5s;
+            animation-duration: 5s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+         }
+         
+         @-webkit-keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         .fadeIn {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+         }
+      </style>
+      
+   </head>
+   <body>
+      
+      <div id="animated-example" class="animated fadeIn"></div>
+      <button onclick="myFunction()">Reload page</button>
+
+      
+      
+      <script>
+         function myFunction() {
+            location.reload();
+         }
+      </script>
+      
+   </body>
+</html>
