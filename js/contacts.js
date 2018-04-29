@@ -31,26 +31,22 @@ const addContact = () => {
 
 const call = (recieverID) => {
     localStorage['reciever'] = JSON.stringify(contacts[recieverID]);
-    document.location = "call.html";
+    database.ref(`/users/${JSON.parse(localStorage.me).uid}/recent/`)
+    .push(contacts[recieverID])
+    .then(() => document.location = "call.html");
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    //// Get contacts from database ////
-    database.ref(`/users/${firebase.auth().currentUser.uid}/contacts/`).on('child_added', (data) => {
-        contacts.push(data.val());
-        document.querySelector("#contact-list").innerHTML += `
-            <li class="clearfix" onclick="call(contacts.length-1)" >
-                <div class="image-holder">
-                    <img class="img-fluid" src="${data.val().photo}" alt="avatar" />
-                </div>
-                <div class="about">
-                    <div class="name">${data.val().name}</div>
-                </div>
-            </li>
-        `;
-    });
-  } else {
-    console.log("didn't work");
-  }
+//// Get contacts from database ////
+database.ref(`/users/${JSON.parse(localStorage.me).uid}/contacts/`).on('child_added', (data) => {
+    contacts.push(data.val());
+    document.querySelector("#contact-list").innerHTML += `
+        <li class="clearfix" onclick="call(contacts.length-1)" >
+            <div class="image-holder">
+                <img class="img-fluid" src="${data.val().photo}" alt="avatar" />
+            </div>
+            <div class="about">
+                <div class="name">${data.val().name}</div>
+            </div>
+        </li>
+    `;
 });

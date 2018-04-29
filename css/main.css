@@ -98,6 +98,7 @@ people-list {
 .people-list img {
   float: left;
   border-radius: 50%;
+  max-width: 55px;
 }
 .people-list .about {
   float: left;
